@@ -15,16 +15,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         networkMonitor.startMonitoring()
         
-        let viewModel = EmployeesViewModel()
-        let viewController = EmployeesViewController(viewModel: viewModel, networkMonitor: networkMonitor)
+        let service = EmployeesService(networkMonitor: networkMonitor, baseURL: "https://run.mocky.io")
+        let viewModel = EmployeesViewModel(service: service)
+        let viewController = EmployeesViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navigationController
-        window.makeKeyAndVisible()
         
         self.window = window
+        self.window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

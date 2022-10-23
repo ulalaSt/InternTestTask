@@ -16,6 +16,10 @@
 		F3CAFB3C2903E7A600DB79DB /* EmployeesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB3B2903E7A600DB79DB /* EmployeesService.swift */; };
 		F3CAFB3E2903EB8000DB79DB /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB3D2903EB8000DB79DB /* NetworkMonitor.swift */; };
 		F3CAFB402903EBCE00DB79DB /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB3F2903EBCE00DB79DB /* EmployeeTableViewCell.swift */; };
+		F3CAFB422904452B00DB79DB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB412904452B00DB79DB /* Models.swift */; };
+		F3CAFB442904496400DB79DB /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB432904496400DB79DB /* Loadable.swift */; };
+		F3CAFB4829046A1400DB79DB /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB4729046A1400DB79DB /* APICall.swift */; };
+		F3CAFB4A2905253A00DB79DB /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB492905253900DB79DB /* ConfigurableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		F3CAFB3B2903E7A600DB79DB /* EmployeesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesService.swift; sourceTree = "<group>"; };
 		F3CAFB3D2903EB8000DB79DB /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		F3CAFB3F2903EBCE00DB79DB /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
+		F3CAFB412904452B00DB79DB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F3CAFB432904496400DB79DB /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		F3CAFB4729046A1400DB79DB /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
+		F3CAFB492905253900DB79DB /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,10 @@
 				F3CAFB2C2903E47F00DB79DB /* Assets.xcassets */,
 				F3CAFB2E2903E47F00DB79DB /* LaunchScreen.storyboard */,
 				F3CAFB312903E47F00DB79DB /* Info.plist */,
+				F3CAFB412904452B00DB79DB /* Models.swift */,
+				F3CAFB432904496400DB79DB /* Loadable.swift */,
+				F3CAFB4729046A1400DB79DB /* APICall.swift */,
+				F3CAFB492905253900DB79DB /* ConfigurableCell.swift */,
 			);
 			path = InternTestTask;
 			sourceTree = "<group>";
@@ -148,11 +160,15 @@
 			files = (
 				F3CAFB3E2903EB8000DB79DB /* NetworkMonitor.swift in Sources */,
 				F3CAFB402903EBCE00DB79DB /* EmployeeTableViewCell.swift in Sources */,
+				F3CAFB442904496400DB79DB /* Loadable.swift in Sources */,
+				F3CAFB4829046A1400DB79DB /* APICall.swift in Sources */,
 				F3CAFB242903E47E00DB79DB /* AppDelegate.swift in Sources */,
+				F3CAFB422904452B00DB79DB /* Models.swift in Sources */,
 				F3CAFB382903E73800DB79DB /* EmployeesViewController.swift in Sources */,
 				F3CAFB3C2903E7A600DB79DB /* EmployeesService.swift in Sources */,
 				F3CAFB3A2903E77D00DB79DB /* EmployeesViewModel.swift in Sources */,
 				F3CAFB262903E47E00DB79DB /* SceneDelegate.swift in Sources */,
+				F3CAFB4A2905253A00DB79DB /* ConfigurableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

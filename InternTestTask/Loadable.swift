@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum Loadable<T> {
+    case notRequested
+    case isLoading
+    case loaded(T)
+    case failed(NetworkError)
+}
