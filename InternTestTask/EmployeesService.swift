@@ -14,7 +14,7 @@ class EmployeesService {
     private var networkMonitor: NetworkMonitor
     
     
-    init(networkMonitor: NetworkMonitor, baseURL: String, session: URLSession = .shared, cacheTimeInterval: TimeInterval = 3600){
+    init(networkMonitor: NetworkMonitor, baseURL: String, session: URLSession = .shared, cacheTimeInterval: TimeInterval = 60){
         self.networkMonitor = networkMonitor
         self.baseURL = baseURL
         self.cacheTimeInterval = cacheTimeInterval
@@ -43,11 +43,15 @@ class EmployeesService {
                 completion(.failure(.unexpectedResponse))
                 return
             }
-            let cacheModel = CompanyCacheModel(company: response.company, lastCacheDate: Date.now.formatted())
+            let cacheModel = CompanyCacheModel(company: response.company, lastCacheDate: Date())
             print("SSS", cacheModel.lastCacheDate)
+            let encoder = JSONEncoder()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            encoder.dateEncodingStrategy = .formatted(dateFormatter)
             if let url = request.url,
                let cacheURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first,
-               let cacheData = try? JSONEncoder().encode(cacheModel) {
+               let cacheData = try? encoder.encode(cacheModel) {
                 do { try cacheData.write(to: cacheURL.appendingPathComponent(url.absoluteString.replacingOccurrences(of: "/", with: ":"))) } catch {}
             }
             completion(.success(response.company))
@@ -59,10 +63,14 @@ class EmployeesService {
             let fileURL = dir.appendingPathComponent(file)
             do {
                 let data = try Data(contentsOf: fileURL)
-                let response = try JSONDecoder().decode(CompanyCacheModel.self, from: data)
-                let lastCacheDate = try Date(response.lastCacheDate, strategy: .dateTime)
+                print("SSS")
+                let decoder = JSONDecoder()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                let response = try decoder.decode(CompanyCacheModel.self, from: data)
                 print("SSS", response.lastCacheDate)
-                let interval = Date.now.timeIntervalSince1970 - lastCacheDate.timeIntervalSince1970
+                let interval = Date().timeIntervalSince1970 - response.lastCacheDate.timeIntervalSince1970
                 if interval > cacheTimeInterval {
                     do {
                         try FileManager.default.removeItem(at: fileURL)

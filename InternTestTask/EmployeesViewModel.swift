@@ -21,7 +21,7 @@ class EmployeesViewModel {
             guard let self = self else { return }
             switch result {
             case .success(let company):
-                self.companyState = .loaded(company)
+                self.companyState = .loaded(company.sorted())
             case .failure(let error):
                 self.companyState = .failed(self.companyState.value, error)
             }
