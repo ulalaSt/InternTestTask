@@ -7,15 +7,18 @@
 
 import Foundation
 
-class EmployeesService {
+class EmployeesWebRepository {
     private var session: URLSession
+    private let cache: URLCache
     private var baseURL: String
     private var networkMonitor: NetworkMonitor
     
-    init(networkMonitor: NetworkMonitor, baseURL: String, session: URLSession = .shared){
+    init(networkMonitor: NetworkMonitor, baseURL: String, session: URLSession = .shared, cache: URLCache = .shared){
         self.networkMonitor = networkMonitor
         self.baseURL = baseURL
+        self.cache = cache
         self.session = session
+        self.session.configuration.waitsForConnectivity = true
     }
     
     func loadCompanyData(completion: @escaping (Loadable<Company>) -> Void) {
@@ -42,13 +45,13 @@ class EmployeesService {
     }
 }
 
-extension EmployeesService {
+extension EmployeesWebRepository {
     enum API {
         case loadCompanyData
     }
 }
 
-extension EmployeesService.API: APICall {
+extension EmployeesWebRepository.API: APICall {
     var path: String {
         switch self {
         case .loadCompanyData:

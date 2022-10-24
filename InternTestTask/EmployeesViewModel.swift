@@ -7,17 +7,19 @@
 
 import Foundation
 
-class EmployeesViewModel {
-    let service: EmployeesService
+class EmployeesInteractor {
+    let webRepository: EmployeesWebRepository
+    let dbRepository: EmployeesDbRepository
     var companyState: Loadable<Company> = .notRequested
     
-    init(service: EmployeesService) {
-        self.service = service
+    init(webRepository: EmployeesWebRepository, dbRepository: EmployeesDbRepository) {
+        self.webRepository = webRepository
+        self.dbRepository = dbRepository
     }
     
     func loadCompanyData(completion: @escaping () -> Void) {
         companyState = .isLoading
-        service.loadCompanyData { [weak self] companyState in
+        webRepository.loadCompanyData { [weak self] companyState in
             self?.companyState = companyState
             print(companyState)
             completion()
