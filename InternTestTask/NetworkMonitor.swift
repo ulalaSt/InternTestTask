@@ -14,14 +14,14 @@ protocol NetworkMonitor {
 
 class NetworkMonitorImpl: NetworkMonitor {
     private let monitor = NWPathMonitor()
-    private let queue = DispatchQueue.global()
+    private let queue = DispatchQueue.init(label: "NetworkMonitor")
     private(set) var isConnected: Bool = false
     
     func startMonitoring() {
-        monitor.start(queue: queue)
         monitor.pathUpdateHandler = { [weak self] path in
             self?.isConnected = (path.status == .satisfied)
         }
+        monitor.start(queue: queue)
     }
     
     func stopMonitoring() {

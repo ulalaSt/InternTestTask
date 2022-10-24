@@ -21,3 +21,8 @@ struct Employee: Codable {
     let phone_number: String
     let skills: [String]
 }
+
+struct CompanyCacheModel: Codable {
+    var company: Company
+    var lastCacheDate: String
+}

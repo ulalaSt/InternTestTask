@@ -15,6 +15,8 @@ class EmployeesViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(EmployeeTableViewCell.self, forCellReuseIdentifier: EmployeeTableViewCell.reuseIdentifier)
         return tableView
     }()
@@ -22,7 +24,7 @@ class EmployeesViewController: UIViewController {
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshControlDidPull), for: .valueChanged)
-        refreshControl.tintColor = .white
+        refreshControl.tintColor = .black
         return refreshControl
     }()
 
@@ -36,9 +38,10 @@ class EmployeesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.refreshControl = refreshControl
         view.backgroundColor = .white
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.refreshControl = refreshControl
         layout()
         reloadData()
     }
@@ -51,9 +54,9 @@ class EmployeesViewController: UIViewController {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     private func reloadData() {
@@ -67,21 +70,30 @@ class EmployeesViewController: UIViewController {
     }
 }
 
+extension EmployeesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let error = viewModel.companyState.error else {
+            return nil
+        }
+        let errorView = ErrorHeaderView(error: error)
+        return errorView
+    }
+}
+
 extension EmployeesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if case let .loaded(company) = viewModel.companyState {
-            return company.employees.count
+        guard let count = viewModel.companyState.value?.employees.count else {
+            return 0
         }
-        return 0
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.reuseIdentifier, for: indexPath)
-        if case let .loaded(company) = viewModel.companyState, let cell = cell as? EmployeeTableViewCell {
-            cell.configure(data: company.employees[indexPath.row])
-            return cell
-        } else {
+        guard let employees = viewModel.companyState.value?.employees, let cell = cell as? EmployeeTableViewCell else {
             return .init()
         }
+        cell.configure(data: employees[indexPath.row])
+        return cell
     }
 }

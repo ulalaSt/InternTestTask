@@ -20,9 +20,9 @@ extension APICall {
             throw NetworkError.invalidRequest
         }
         var request = URLRequest(url: url)
-//        request.httpBody = try body()
-//        request.httpMethod = method
-//        request.allHTTPHeaderFields = headers
+        request.httpBody = try body()
+        request.httpMethod = method
+        request.allHTTPHeaderFields = headers
         return request
     }
 }
