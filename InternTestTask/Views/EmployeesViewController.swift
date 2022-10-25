@@ -6,13 +6,12 @@
 //
 
 import UIKit
-
+import Network
 class EmployeesViewController: UIViewController {
     private let viewModel: EmployeesViewModel
     
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
         tableView.estimatedRowHeight = 100
@@ -35,9 +34,10 @@ class EmployeesViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
         view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
@@ -45,7 +45,7 @@ class EmployeesViewController: UIViewController {
         layout()
         reloadData()
     }
-    
+
     @objc private func refreshControlDidPull() {
         reloadData()
     }
@@ -53,7 +53,7 @@ class EmployeesViewController: UIViewController {
     private func layout() {
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -72,28 +72,30 @@ class EmployeesViewController: UIViewController {
 
 extension EmployeesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let error = viewModel.companyState.error else {
-            return nil
+        let stackView = UIStackView()
+        stackView.distribution = .equalSpacing
+        stackView.axis = .vertical
+        stackView.spacing = 15
+        stackView.addArrangedSubview(TitleHeaderView(companyName: viewModel.companyState.value?.name))
+        if let error = viewModel.companyState.error {
+            stackView.addArrangedSubview(ErrorHeaderView(error: error))
         }
-        let errorView = ErrorHeaderView(error: error)
-        return errorView
+        return stackView
     }
 }
 
 extension EmployeesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = viewModel.companyState.value?.employees.count else {
-            return 0
-        }
+        guard let count = viewModel.companyState.value?.employees.count else { return 0 }
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.reuseIdentifier, for: indexPath)
-        guard let employees = viewModel.companyState.value?.employees, let cell = cell as? EmployeeTableViewCell else {
-            return .init()
+        if let employees = viewModel.companyState.value?.employees, let cell = cell as? EmployeeTableViewCell {
+            cell.configure(data: employees[indexPath.row])
+            return cell
         }
-        cell.configure(data: employees[indexPath.row])
-        return cell
+        return .init()
     }
 }

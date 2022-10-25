@@ -8,11 +8,9 @@
 import UIKit
 
 class EmployeeTableViewCell: UITableViewCell, ConfigurableCell {
-    private let circleSize: CGFloat = 50
-    
     private let containterView: UIView = {
         let containterView = UIView()
-        containterView.backgroundColor = UIColor.init(red: 220/255, green: 229/255, blue: 228/255, alpha: 1)
+        containterView.backgroundColor = Colors.graySky
         containterView.layer.cornerRadius = 25
         containterView.clipsToBounds = true
         containterView.translatesAutoresizingMaskIntoConstraints = false
@@ -21,7 +19,7 @@ class EmployeeTableViewCell: UITableViewCell, ConfigurableCell {
 
     private let nameLabel: UILabel = {
         let nameLabel = UILabel()
-        nameLabel.textColor = UIColor.init(red: 88/255, green: 97/255, blue: 104/255, alpha: 1)
+        nameLabel.textColor = Colors.outerSpace
         nameLabel.font = .systemFont(ofSize: 24, weight: .regular)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.sizeToFit()
@@ -29,7 +27,7 @@ class EmployeeTableViewCell: UITableViewCell, ConfigurableCell {
     }()
     private let circle: UIView = {
         let circle = UIView()
-        circle.backgroundColor = UIColor.init(red: 68/255, green: 77/255, blue: 86/255, alpha: 1)
+        circle.backgroundColor = Colors.haleNavy
         circle.clipsToBounds = true
         circle.translatesAutoresizingMaskIntoConstraints = false
         return circle
@@ -44,7 +42,7 @@ class EmployeeTableViewCell: UITableViewCell, ConfigurableCell {
     }()
     private let phoneLabel: UILabel = {
         let phoneLabel = UILabel()
-        phoneLabel.textColor = UIColor.init(red: 88/255, green: 97/255, blue: 104/255, alpha: 1)
+        phoneLabel.textColor = Colors.outerSpace
         phoneLabel.font = .systemFont(ofSize: 15, weight: .regular)
         phoneLabel.translatesAutoresizingMaskIntoConstraints = false
         phoneLabel.sizeToFit()
@@ -52,41 +50,26 @@ class EmployeeTableViewCell: UITableViewCell, ConfigurableCell {
     }()
     private let skillsTextLabel: UILabel = {
         let skillsLabel = UILabel()
-        skillsLabel.textColor = UIColor.init(red: 68/255, green: 77/255, blue: 86/255, alpha: 1)
+        skillsLabel.textColor = Colors.haleNavy
         skillsLabel.text = "Skills:"
         skillsLabel.translatesAutoresizingMaskIntoConstraints = false
         return skillsLabel
     }()
     private let skillsLabel: UILabel = {
         let skillsLabel = UILabel()
-        skillsLabel.textColor = UIColor.white
-        skillsLabel.text = "Skills:"
+        skillsLabel.textColor = Colors.courtLandBlue
         skillsLabel.translatesAutoresizingMaskIntoConstraints = false
         skillsLabel.numberOfLines = 0
-//        skillsLabel.backgroundColor = UIColor.init(red: 88/255, green: 97/255, blue: 104/255, alpha: 1)
-//        skillsLabel.clipsToBounds = true
-//        skillsLabel.layer.cornerRadius = 10
         return skillsLabel
-    }()
-    private let labelHorizontalStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.alignment = .bottom
-        stack.distribution = .fill
-        stack.spacing = 7
-        return stack
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         layout()
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     private func layout() {
-        backgroundColor = .clear
         contentView.addSubview(containterView)
         NSLayoutConstraint.activate([
             containterView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -98,8 +81,8 @@ class EmployeeTableViewCell: UITableViewCell, ConfigurableCell {
         NSLayoutConstraint.activate([
             circle.topAnchor.constraint(equalTo: containterView.topAnchor, constant: 10),
             circle.leadingAnchor.constraint(equalTo: containterView.leadingAnchor, constant: 10),
-            circle.widthAnchor.constraint(equalToConstant: 50),
-            circle.heightAnchor.constraint(equalToConstant: 50),
+            circle.widthAnchor.constraint(equalToConstant: Constants.iconSize),
+            circle.heightAnchor.constraint(equalToConstant: Constants.iconSize),
         ])
         containterView.addSubview(nameLabel)
         NSLayoutConstraint.activate([
@@ -113,7 +96,7 @@ class EmployeeTableViewCell: UITableViewCell, ConfigurableCell {
             phoneLabel.trailingAnchor.constraint(lessThanOrEqualTo: containterView.trailingAnchor, constant: -10)
         ])
         circle.addSubview(nameFirstLetter)
-        circle.layer.cornerRadius = circleSize/2
+        circle.layer.cornerRadius = Constants.iconSize/2
         NSLayoutConstraint.activate([
             nameFirstLetter.centerXAnchor.constraint(equalTo: circle.centerXAnchor),
             nameFirstLetter.centerYAnchor.constraint(equalTo: circle.centerYAnchor),
@@ -132,21 +115,15 @@ class EmployeeTableViewCell: UITableViewCell, ConfigurableCell {
         ])
     }
     func configure(data: Employee) {
-        print(data)
         self.nameLabel.text = data.name
         self.nameFirstLetter.text = data.name.first?.uppercased()
         self.phoneLabel.text = "(\(data.phone_number))"
-        var text = ""
-        for skill in data.skills {
-            text.append("\(skill), \(skill), \(skill), \(skill), ")
-        }
-        self.skillsLabel.text = text
+        self.skillsLabel.text = data.skills.joined(separator: ", ")
     }
 }
 
 extension EmployeeTableViewCell {
     struct Constants {
-        static let sideInset: CGFloat = 10
-        static let circleSize: CGFloat = 50
+        static let iconSize: CGFloat = 50
     }
 }

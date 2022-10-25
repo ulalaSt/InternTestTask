@@ -28,3 +28,12 @@ enum Loadable<T> {
         }
     }
 }
+
+extension Loadable {
+    mutating func setIsLoading() {
+        self = .isLoading(value)
+    }
+    mutating func setFailed(error: NetworkError) {
+        self = .failed(value, error)
+    }
+}

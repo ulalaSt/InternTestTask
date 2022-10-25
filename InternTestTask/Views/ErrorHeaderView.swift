@@ -10,7 +10,7 @@ import UIKit
 class ErrorHeaderView: UIView {
     private let containterView: UIView = {
         let containterView = UIView()
-        containterView.backgroundColor = UIColor.init(red: 191/255, green: 200/255, blue: 205/255, alpha: 1)
+        containterView.backgroundColor = Colors.gentleGray
         containterView.layer.cornerRadius = 10
         containterView.clipsToBounds = true
         containterView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +19,7 @@ class ErrorHeaderView: UIView {
 
     private let errorLabel: UILabel = {
         let errorLabel = UILabel()
-        errorLabel.textColor = UIColor.init(red: 68/255, green: 77/255, blue: 86/255, alpha: 1)
+        errorLabel.textColor = Colors.haleNavy
         errorLabel.font = .systemFont(ofSize: 13, weight: .medium)
         errorLabel.numberOfLines = 0
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +28,7 @@ class ErrorHeaderView: UIView {
     private let errorImage: UIImageView = {
         let errorImage = UIImageView()
         errorImage.contentMode = .scaleAspectFit
-        errorImage.tintColor = UIColor.init(red: 68/255, green: 77/255, blue: 86/255, alpha: 1)
+        errorImage.tintColor = Colors.haleNavy
         errorImage.translatesAutoresizingMaskIntoConstraints = false
         return errorImage
     }()
@@ -42,6 +42,10 @@ class ErrorHeaderView: UIView {
         default:
             errorImage.image = UIImage(systemName: "exclamationmark.triangle")
         }
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.5
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 5
         layout()
     }
     required init?(coder: NSCoder) {

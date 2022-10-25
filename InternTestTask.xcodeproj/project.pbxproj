@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		F33283582905A66B00973178 /* ErrorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33283572905A66B00973178 /* ErrorHeaderView.swift */; };
+		F332835C2906EE5E00973178 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332835B2906EE5E00973178 /* TitleHeaderView.swift */; };
+		F33283602907C5C100973178 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332835F2907C5C100973178 /* NetworkError.swift */; };
+		F33283622907C62E00973178 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33283612907C62E00973178 /* CacheManager.swift */; };
+		F33283642907E99700973178 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33283632907E99700973178 /* Colors.swift */; };
+		F332836C2907EC8000973178 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332836B2907EC8000973178 /* Company.swift */; };
+		F332836E2907EC9D00973178 /* CompanyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332836D2907EC9D00973178 /* CompanyResponse.swift */; };
+		F33283702907ECBC00973178 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = F332836F2907ECBC00973178 /* Employee.swift */; };
 		F3CAFB242903E47E00DB79DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB232903E47E00DB79DB /* AppDelegate.swift */; };
 		F3CAFB262903E47E00DB79DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB252903E47E00DB79DB /* SceneDelegate.swift */; };
 		F3CAFB2D2903E47F00DB79DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3CAFB2C2903E47F00DB79DB /* Assets.xcassets */; };
@@ -17,7 +24,7 @@
 		F3CAFB3C2903E7A600DB79DB /* EmployeesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB3B2903E7A600DB79DB /* EmployeesService.swift */; };
 		F3CAFB3E2903EB8000DB79DB /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB3D2903EB8000DB79DB /* NetworkMonitor.swift */; };
 		F3CAFB402903EBCE00DB79DB /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB3F2903EBCE00DB79DB /* EmployeeTableViewCell.swift */; };
-		F3CAFB422904452B00DB79DB /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB412904452B00DB79DB /* Models.swift */; };
+		F3CAFB422904452B00DB79DB /* CacheModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB412904452B00DB79DB /* CacheModel.swift */; };
 		F3CAFB442904496400DB79DB /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB432904496400DB79DB /* Loadable.swift */; };
 		F3CAFB4829046A1400DB79DB /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB4729046A1400DB79DB /* APICall.swift */; };
 		F3CAFB4A2905253A00DB79DB /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CAFB492905253900DB79DB /* ConfigurableCell.swift */; };
@@ -25,6 +32,13 @@
 
 /* Begin PBXFileReference section */
 		F33283572905A66B00973178 /* ErrorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHeaderView.swift; sourceTree = "<group>"; };
+		F332835B2906EE5E00973178 /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
+		F332835F2907C5C100973178 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F33283612907C62E00973178 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		F33283632907E99700973178 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		F332836B2907EC8000973178 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		F332836D2907EC9D00973178 /* CompanyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyResponse.swift; sourceTree = "<group>"; };
+		F332836F2907ECBC00973178 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		F3CAFB202903E47E00DB79DB /* InternTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InternTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3CAFB232903E47E00DB79DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3CAFB252903E47E00DB79DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +50,7 @@
 		F3CAFB3B2903E7A600DB79DB /* EmployeesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeesService.swift; sourceTree = "<group>"; };
 		F3CAFB3D2903EB8000DB79DB /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		F3CAFB3F2903EBCE00DB79DB /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
-		F3CAFB412904452B00DB79DB /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		F3CAFB412904452B00DB79DB /* CacheModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheModel.swift; sourceTree = "<group>"; };
 		F3CAFB432904496400DB79DB /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		F3CAFB4729046A1400DB79DB /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		F3CAFB492905253900DB79DB /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
@@ -53,6 +67,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F33283662907EC1200973178 /* ApplicationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				F3CAFB232903E47E00DB79DB /* AppDelegate.swift */,
+				F3CAFB252903E47E00DB79DB /* SceneDelegate.swift */,
+			);
+			path = ApplicationLayer;
+			sourceTree = "<group>";
+		};
+		F33283672907EC3600973178 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F3CAFB372903E73700DB79DB /* EmployeesViewController.swift */,
+				F3CAFB3F2903EBCE00DB79DB /* EmployeeTableViewCell.swift */,
+				F33283572905A66B00973178 /* ErrorHeaderView.swift */,
+				F332835B2906EE5E00973178 /* TitleHeaderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F33283682907EC4900973178 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F3CAFB392903E77C00DB79DB /* EmployeesViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F33283692907EC5500973178 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F3CAFB3B2903E7A600DB79DB /* EmployeesService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F332836A2907EC6B00973178 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F3CAFB412904452B00DB79DB /* CacheModel.swift */,
+				F332836B2907EC8000973178 /* Company.swift */,
+				F332836D2907EC9D00973178 /* CompanyResponse.swift */,
+				F332836F2907ECBC00973178 /* Employee.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F33283712907ECF100973178 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F3CAFB3D2903EB8000DB79DB /* NetworkMonitor.swift */,
+				F3CAFB432904496400DB79DB /* Loadable.swift */,
+				F3CAFB4729046A1400DB79DB /* APICall.swift */,
+				F3CAFB492905253900DB79DB /* ConfigurableCell.swift */,
+				F332835F2907C5C100973178 /* NetworkError.swift */,
+				F33283612907C62E00973178 /* CacheManager.swift */,
+				F33283632907E99700973178 /* Colors.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		F3CAFB172903E47E00DB79DB = {
 			isa = PBXGroup;
 			children = (
@@ -72,21 +147,15 @@
 		F3CAFB222903E47E00DB79DB /* InternTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				F3CAFB232903E47E00DB79DB /* AppDelegate.swift */,
-				F3CAFB252903E47E00DB79DB /* SceneDelegate.swift */,
-				F3CAFB372903E73700DB79DB /* EmployeesViewController.swift */,
-				F3CAFB392903E77C00DB79DB /* EmployeesViewModel.swift */,
-				F3CAFB3B2903E7A600DB79DB /* EmployeesService.swift */,
-				F3CAFB3F2903EBCE00DB79DB /* EmployeeTableViewCell.swift */,
-				F3CAFB3D2903EB8000DB79DB /* NetworkMonitor.swift */,
+				F33283662907EC1200973178 /* ApplicationLayer */,
+				F332836A2907EC6B00973178 /* Models */,
+				F33283672907EC3600973178 /* Views */,
+				F33283682907EC4900973178 /* ViewModels */,
+				F33283692907EC5500973178 /* Services */,
+				F33283712907ECF100973178 /* Helpers */,
 				F3CAFB2C2903E47F00DB79DB /* Assets.xcassets */,
 				F3CAFB2E2903E47F00DB79DB /* LaunchScreen.storyboard */,
 				F3CAFB312903E47F00DB79DB /* Info.plist */,
-				F3CAFB412904452B00DB79DB /* Models.swift */,
-				F3CAFB432904496400DB79DB /* Loadable.swift */,
-				F3CAFB4729046A1400DB79DB /* APICall.swift */,
-				F3CAFB492905253900DB79DB /* ConfigurableCell.swift */,
-				F33283572905A66B00973178 /* ErrorHeaderView.swift */,
 			);
 			path = InternTestTask;
 			sourceTree = "<group>";
@@ -162,14 +231,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3CAFB3E2903EB8000DB79DB /* NetworkMonitor.swift in Sources */,
+				F33283602907C5C100973178 /* NetworkError.swift in Sources */,
+				F332836E2907EC9D00973178 /* CompanyResponse.swift in Sources */,
 				F3CAFB402903EBCE00DB79DB /* EmployeeTableViewCell.swift in Sources */,
 				F33283582905A66B00973178 /* ErrorHeaderView.swift in Sources */,
 				F3CAFB442904496400DB79DB /* Loadable.swift in Sources */,
+				F332835C2906EE5E00973178 /* TitleHeaderView.swift in Sources */,
+				F33283702907ECBC00973178 /* Employee.swift in Sources */,
 				F3CAFB4829046A1400DB79DB /* APICall.swift in Sources */,
 				F3CAFB242903E47E00DB79DB /* AppDelegate.swift in Sources */,
-				F3CAFB422904452B00DB79DB /* Models.swift in Sources */,
+				F3CAFB422904452B00DB79DB /* CacheModel.swift in Sources */,
+				F33283642907E99700973178 /* Colors.swift in Sources */,
 				F3CAFB382903E73800DB79DB /* EmployeesViewController.swift in Sources */,
 				F3CAFB3C2903E7A600DB79DB /* EmployeesService.swift in Sources */,
+				F332836C2907EC8000973178 /* Company.swift in Sources */,
+				F33283622907C62E00973178 /* CacheManager.swift in Sources */,
 				F3CAFB3A2903E77D00DB79DB /* EmployeesViewModel.swift in Sources */,
 				F3CAFB262903E47E00DB79DB /* SceneDelegate.swift in Sources */,
 				F3CAFB4A2905253A00DB79DB /* ConfigurableCell.swift in Sources */,

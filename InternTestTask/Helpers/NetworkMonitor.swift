@@ -14,7 +14,7 @@ protocol NetworkMonitor {
 
 class NetworkMonitorImpl: NetworkMonitor {
     private let monitor = NWPathMonitor()
-    private let queue = DispatchQueue.init(label: "NetworkMonitor")
+    private let queue = DispatchQueue(label: "NetworkMonitor")
     private(set) var isConnected: Bool = false
     
     func startMonitoring() {
